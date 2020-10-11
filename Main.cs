@@ -16,7 +16,7 @@ namespace deCypher
 
             var tmp = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Green;
-            CaesarCypher.BruteForceDecode(encoded).ForEach((string s) => Console.WriteLine(s));
+            CaesarCypher.MatchBruteForceDecode(encoded, "Hi").ForEach((string s) => Console.WriteLine(s));
             Console.ForegroundColor = tmp;
         }
     }
