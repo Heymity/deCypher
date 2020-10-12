@@ -9,8 +9,8 @@ namespace deCypher
         public bool ignoreCase = false;
         public int rot = 3;
 
-        public string Encode() => Encode(text, rot, alphabet, ignoreCase);
-        public string Decode() => Decode(text, rot, alphabet, ignoreCase);
+        public string Encode() => text = Encode(text, rot, alphabet, ignoreCase);
+        public string Decode() => text = Decode(text, rot, alphabet, ignoreCase);
         public List<string> BruteForceDecode() => BruteForceDecode(text, alphabet, ignoreCase);
         public List<string> QuickBruteForceDecode(int sampleSize = 10) => QuickBruteForceDecode(text, sampleSize, alphabet, ignoreCase);
         public List<string> MatchBruteForceDecode(string match) => MatchBruteForceDecode(text, match, alphabet, ignoreCase);
