@@ -2,8 +2,35 @@
 
 namespace deCypher
 {
-    public static class CaesarCypher
+    public class CaesarCypher
     {
+        public string text;
+        public Alphabet alphabet = Alphabet.defaultAlphabet;
+        public bool ignoreCase = false;
+        public int rot = 3;
+
+        public string Encode() => text = Encode(text, rot, alphabet, ignoreCase);
+        public string Decode() => text = Decode(text, rot, alphabet, ignoreCase);
+        public List<string> BruteForceDecode() => BruteForceDecode(text, alphabet, ignoreCase);
+        public List<string> QuickBruteForceDecode(int sampleSize = 10) => QuickBruteForceDecode(text, sampleSize, alphabet, ignoreCase);
+        public List<string> MatchBruteForceDecode(string match) => MatchBruteForceDecode(text, match, alphabet, ignoreCase);
+        public List<string> MatchQuickBruteForceDecode(string match, int sampleSize = 10) => MatchQuickBruteForceDecode(text, match, sampleSize, alphabet, ignoreCase);
+        public Dictionary<string, bool> DictMatchBruteForceDecode(string match) => DictMatchBruteForceDecode(text, match, alphabet, ignoreCase);
+        public Dictionary<string, bool> DictMatchQuickBruteForceDecode(string match, int sampleSize) => DictMatchQuickBruteForceDecode(text, match, sampleSize, alphabet, ignoreCase);
+
+        public CaesarCypher(string _text, Alphabet _alphabet, bool _ignoreCase, int _rot)
+        {
+            text = _text;
+            alphabet = _alphabet;
+            ignoreCase = _ignoreCase;
+            rot = _rot;
+        }
+
+        public CaesarCypher(string _text)
+        {
+            text = _text;
+        }
+
         public static string Encode(string text, int rot, Alphabet alphabet = null, bool ignoreCase = false)
         {
             alphabet ??= Alphabet.defaultAlphabet;
@@ -62,6 +89,56 @@ namespace deCypher
             for (var i = 0; i <= alphabet.Length; i++)
             {
                 results.Add(Encode(text, i, alphabet, ignoreCase));
+            }
+            return results;
+        }
+
+        public static List<string> MatchBruteForceDecode(string text, string match, Alphabet alphabet = null, bool ignoreCase = false)
+        {
+            alphabet ??= Alphabet.defaultAlphabet;
+            var results = new List<string>();
+            for (var i = 0; i <= alphabet.Length; i++)
+            {
+                var decode = Encode(text, i, alphabet, ignoreCase);
+                if (decode.Contains(match)) results.Add(decode);
+            }
+            return results;
+        }
+
+        public static List<string> MatchQuickBruteForceDecode(string text, string match, int sampleSize, Alphabet alphabet = null, bool ignoreCase = false)
+        {
+            alphabet ??= Alphabet.defaultAlphabet;
+            if (text.Length > sampleSize) text = text.Remove(sampleSize);
+            var results = new List<string>();
+            for (var i = 0; i <= alphabet.Length; i++)
+            {
+                var decode = Encode(text, i, alphabet, ignoreCase);
+                if (decode.Contains(match)) results.Add(decode);
+            }
+            return results;
+        }
+
+        public static Dictionary<string, bool> DictMatchBruteForceDecode(string text, string match, Alphabet alphabet = null, bool ignoreCase = false)
+        {
+            alphabet ??= Alphabet.defaultAlphabet;
+            var results = new Dictionary<string, bool>();
+            for (var i = 0; i <= alphabet.Length - 1; i++)
+            {
+                var decode = Encode(text, i, alphabet, ignoreCase);
+                results.Add(decode, decode.Contains(match));
+            }
+            return results;
+        }
+
+        public static Dictionary<string, bool> DictMatchQuickBruteForceDecode(string text, string match, int sampleSize, Alphabet alphabet = null, bool ignoreCase = false)
+        {
+            alphabet ??= Alphabet.defaultAlphabet;
+            if (text.Length > sampleSize) text = text.Remove(sampleSize);
+            var results = new Dictionary<string, bool>();
+            for (var i = 0; i <= alphabet.Length - 1; i++)
+            {
+                var decode = Encode(text, i, alphabet, ignoreCase);
+                results.Add(decode, decode.Contains(match));
             }
             return results;
         }

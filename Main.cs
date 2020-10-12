@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace deCypher
 {
@@ -16,7 +15,18 @@ namespace deCypher
 
             var tmp = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Green;
-            CaesarCypher.BruteForceDecode(encoded).ForEach((string s) => Console.WriteLine(s));
+            CaesarCypher.MatchBruteForceDecode(encoded, "Gabriel").ForEach((string s) => Console.WriteLine(s));
+            Console.WriteLine();
+            foreach(var c in CaesarCypher.DictMatchBruteForceDecode(encoded, "Gabriel"))
+            {
+                if (c.Value == true) 
+                { 
+                    Console.ForegroundColor = ConsoleColor.Magenta; 
+                    Console.Write(" > ");
+                }
+                else Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(c.Key);
+            }
             Console.ForegroundColor = tmp;
         }
     }

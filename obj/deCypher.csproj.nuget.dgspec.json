@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj": {}
+    "D:\\Gabriel\\deCypher\\deCypher.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj": {
+    "D:\\Gabriel\\deCypher\\deCypher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj",
+        "projectUniqueName": "D:\\Gabriel\\deCypher\\deCypher.csproj",
         "projectName": "deCypher",
-        "projectPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj",
-        "packagesPath": "C:\\Users\\GABRIEL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\obj\\",
+        "projectPath": "D:\\Gabriel\\deCypher\\deCypher.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\Gabriel\\deCypher\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\GABRIEL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
