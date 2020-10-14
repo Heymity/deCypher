@@ -2,7 +2,7 @@
 
 namespace deCypher
 {
-    public class CaesarCypher
+    public class CaesarCypher : ICypher<string>
     {
         public string text;
         public Alphabet alphabet = Alphabet.defaultAlphabet;
@@ -14,7 +14,7 @@ namespace deCypher
         public List<string> BruteForceDecode() => BruteForceDecode(text, alphabet, ignoreCase);
         public List<string> ShortBruteForceDecode(int sampleSize = 10) => ShortBruteForceDecode(text, sampleSize, alphabet, ignoreCase);
         public List<string> MatchBruteForceDecode(string match) => MatchBruteForceDecode(text, match, alphabet, ignoreCase);
-        public Dictionary<string, bool> DictMatchBruteForceDecode(string match) => DictMatchBruteForceDecode(text, match, alphabet, ignoreCase);
+        public (Dictionary<string, bool> results, List<int> matchIndexes) DictMatchBruteForceDecode(string match) => DictMatchBruteForceDecode(text, match, alphabet, ignoreCase);
 
         public CaesarCypher(string _text, Alphabet _alphabet, bool _ignoreCase, int _rot)
         {
@@ -33,7 +33,11 @@ namespace deCypher
         {
             alphabet ??= Alphabet.defaultAlphabet;
             var newString = "";
-            if (ignoreCase) alphabet.ToLowerCase();
+            if (ignoreCase)
+            {
+                alphabet.alphabet = alphabet.ListToLowerCase();
+                text = text.ToLowerInvariant();
+            }
             for (var i = 0; i < text.Length; i++)
             {
                 var tmp = alphabet.IndexOf(text[i]);
@@ -95,6 +99,7 @@ namespace deCypher
         {
             alphabet ??= Alphabet.defaultAlphabet;
             var results = new List<string>();
+            if (ignoreCase) match = match.ToLowerInvariant();
             for (var i = 0; i <= alphabet.Length; i++)
             {
                 var decode = Encode(text, i, alphabet, ignoreCase);
@@ -103,16 +108,20 @@ namespace deCypher
             return results;
         }
 
-        public static Dictionary<string, bool> DictMatchBruteForceDecode(string text, string match, Alphabet alphabet = null, bool ignoreCase = false)
+        public static (Dictionary<string, bool> results, List<int> matchIndexes) DictMatchBruteForceDecode(string text, string match, Alphabet alphabet = null, bool ignoreCase = false)
         {
             alphabet ??= Alphabet.defaultAlphabet;
             var results = new Dictionary<string, bool>();
+            var matchIndexes = new List<int>();
+            if (ignoreCase) match = match.ToLowerInvariant();
             for (var i = 0; i <= alphabet.Length - 1; i++)
             {
                 var decode = Encode(text, i, alphabet, ignoreCase);
-                results.Add(decode, decode.Contains(match));
+                var tmp = decode.Contains(match);
+                results.Add(decode, tmp);
+                if (tmp) matchIndexes.Add(i);
             }
-            return results;
+            return (results, matchIndexes);
         }
 
     }

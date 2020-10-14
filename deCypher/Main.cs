@@ -6,7 +6,7 @@ namespace deCypher
     {
         public static void Main(string[] args)
         {
-            var encoded = CaesarCypher.Encode("Hi I`m Gabriel Pasquale", 3);
+            var encoded = CaesarCypher.Encode("Hi I`m Gabriel Pasquale", 3, null, false);
 
             Console.WriteLine(encoded);
 
@@ -17,7 +17,7 @@ namespace deCypher
             Console.ForegroundColor = ConsoleColor.Green;
             CaesarCypher.MatchBruteForceDecode(encoded, "Gabriel").ForEach((string s) => Console.WriteLine(s));
             Console.WriteLine();
-            foreach(var c in CaesarCypher.DictMatchBruteForceDecode(encoded, "Gabriel"))
+            foreach(var c in CaesarCypher.DictMatchBruteForceDecode(encoded, "Gabriel").results)
             {
                 if (c.Value == true) 
                 { 

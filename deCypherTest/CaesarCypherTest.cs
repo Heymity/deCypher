@@ -64,7 +64,7 @@ namespace deCypherTest
             CaesarCypher caesarCypher = new CaesarCypher("Kl L`p Jdeulho Sdvtxdoh", Alphabet.defaultAlphabet, false, 3);
             var list = caesarCypher.DictMatchBruteForceDecode("Hi");
 
-            Assert.AreEqual("Hi I`m Gabriel Pasquale", list.ElementAt(23).Key);
+            Assert.AreEqual("Hi I`m Gabriel Pasquale", list.results.ElementAt(list.matchIndexes[0]).Key);
         }
 
         [TestMethod]
@@ -72,6 +72,20 @@ namespace deCypherTest
         {
             // Create an instance to test:
             CaesarCypher caesarCypher = new CaesarCypher("Hi I`m Gabriel Pasquale");
+
+            // Assert that values are corrects
+            Assert.IsNotNull(caesarCypher);
+            Assert.AreEqual("Hi I`m Gabriel Pasquale", caesarCypher.text);
+            Assert.AreEqual(Alphabet.defaultAlphabet, caesarCypher.alphabet);
+            Assert.AreEqual(false, caesarCypher.ignoreCase);
+            Assert.AreEqual(3, caesarCypher.rot);
+        }
+
+        [TestMethod]
+        public void CaesarCypherConstructor()
+        {
+            // Create an instance to test:
+            CaesarCypher caesarCypher = new CaesarCypher("Hi I`m Gabriel Pasquale", Alphabet.defaultAlphabet, false, 3);
 
             // Assert that values are corrects
             Assert.IsNotNull(caesarCypher);
@@ -90,6 +104,20 @@ namespace deCypherTest
             caesarCypher.Encode();
 
             Assert.AreEqual("Oruhp lsvxp groru vlw dphw, frqvhfwhwxu dglslvflqj holw.Txlvtxh iulqjlood ldfxolv judylgd.Lq vhg dxjxh gdslexv, gdslexv oljxod hohphqwxp, xoodpfrushu pl.Vhg sodfhudw sxoylqdu whooxv, hx idflolvlv ulvxv dffxpvdq ylwdh.Dhqhdq vdslhq dqwh, lqwhugxp qrq dxjxh frpprgr, yhvwlexoxp oreruwlv ulvxv.Gxlv oreruwlv whpsru whooxv lq hohlihqg.Pdhfhqdv ylwdh ihxjldw dqwh.Xw pdxulv dqwh, srvxhuh hjhw wulvwltxh txlv, frqglphqwxp dw gldp.Surlq xw ylyhuud ohr.Vhg yhqhqdwlv lqwhugxp qlvo, vlw dphw frqvhfwhwxu hqlp frqglphqwxp d.Rufl ydulxv qdwrtxh shqdwlexv hw pdjqlv glv sduwxulhqw prqwhv, qdvfhwxu ulglfxoxv pxv.Xw hx glfwxp lsvxp.Gxlv sruwwlwru txlv groru vhg ydulxv. Qxqf sxoylqdu qlvo d pdjqd srvxhuh whpsru.Txlvtxh qlek wxuslv, wulvwltxh d sruwd vhg, vdjlwwlv lg gxl.Lqwhjhu dw wxuslv xw txdp ruqduh oxfwxv yho ylwdh wxuslv.Gxlv qrq yxosxwdwh qxqf.Shoohqwhvtxh vlw dphw ukrqfxv hurv, hjhw wulvwltxh groru.Fxudelwxu qxood ha, yxosxwdwh lg pdjqd vhg, yroxwsdw idxflexv hurv.Qdp sruwd txdp vhg iholv odflqld, df ixvfh. ", caesarCypher.text);
+        }
+
+        [TestMethod]
+        public void IgnoreCaseTest()
+        {
+            // Create an instance to test:
+            CaesarCypher caseSensitive = new CaesarCypher("ThIs Is A CaSe SenSitIvE ExaMplE", Alphabet.defaultAlphabet, false, 3);
+            CaesarCypher caseInsensitive = new CaesarCypher("ThIs Is NoT A CaSe SenSitIvE ExaMplE", Alphabet.defaultAlphabet, true, 3);
+
+            caseSensitive.Encode();
+            caseInsensitive.Encode();
+
+            Assert.AreEqual("WkLv Lv D FdVh VhqVlwLyH HadPsoH", caseSensitive.text);
+            Assert.AreEqual("wklv lv qrw d fdvh vhqvlwlyh hadpsoh", caseInsensitive.text);
         }
     }
 }

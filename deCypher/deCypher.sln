@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "deCypher", "deCypher.csproj", "{26F990DC-E76F-41CC-9E41-D8B8A1A81E94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deCypherTest", "..\deCypherTest\deCypherTest.csproj", "{9F125B44-36E8-4E84-9D48-B35032453191}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "deCypherTest", "..\deCypherTest\deCypherTest.csproj", "{9F125B44-36E8-4E84-9D48-B35032453191}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

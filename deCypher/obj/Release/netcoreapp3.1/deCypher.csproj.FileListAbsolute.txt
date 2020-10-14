@@ -1,0 +1,13 @@
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\bin\Release\netcoreapp3.1\deCypher.exe
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\bin\Release\netcoreapp3.1\deCypher.deps.json
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\bin\Release\netcoreapp3.1\deCypher.runtimeconfig.json
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\bin\Release\netcoreapp3.1\deCypher.runtimeconfig.dev.json
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\bin\Release\netcoreapp3.1\deCypher.dll
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\bin\Release\netcoreapp3.1\deCypher.pdb
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\obj\Release\netcoreapp3.1\deCypher.csprojAssemblyReference.cache
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\obj\Release\netcoreapp3.1\deCypher.AssemblyInfoInputs.cache
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\obj\Release\netcoreapp3.1\deCypher.AssemblyInfo.cs
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\obj\Release\netcoreapp3.1\deCypher.csproj.CoreCompileInputs.cache
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\obj\Release\netcoreapp3.1\deCypher.dll
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\obj\Release\netcoreapp3.1\deCypher.pdb
+C:\Users\GABRIEL\Desktop\Lang Files\deCypher\cs\deCypher\obj\Release\netcoreapp3.1\deCypher.genruntimeconfig.cache
