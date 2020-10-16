@@ -119,5 +119,40 @@ namespace deCypherTest
             Assert.AreEqual("WkLv Lv D FdVh VhqVlwLyH HadPsoH", caseSensitive.text);
             Assert.AreEqual("wklv lv qrw d fdvh vhqvlwlyh hadpsoh", caseInsensitive.text);
         }
+
+        [TestMethod]
+        public void DifferentAlphabetEncodeCaesar()
+        {
+            // Create an instance to test:
+            CaesarCypher caesarCypher = new CaesarCypher("Hi I`m Gabriel Pasquale", Alphabet.complexAlphabet, false, 3);
+            caesarCypher.Encode();
+
+            Assert.AreEqual("90 0qñ 82ç{06_ [2}]\"2_6", caesarCypher.text);
+        }
+
+        [TestMethod]
+        public void DifferentAlphabetDecodeCaesar()
+        {
+            // Create an instance to test:
+            CaesarCypher caesarCypher = new CaesarCypher("90 0qñ 82ç{06_ [2}]\"2_6", Alphabet.complexAlphabet, false, 3);
+            caesarCypher.Decode();
+
+            /// Ignore Case enabled for using the complex alphabet, here is why:
+            ///     a1b2cç3d4e5f6g7h8i9j0k-l=m_nñ+o`p~q[r]s{t}u;v\"w;x'y/z?<.>\\|!)@(#*$&%^´
+            ///     
+            /// This above is the complex alphabet, as you may see
+            /// with a rotation of 3, as we are using in this test,
+            /// a letter like "H" and like "h" will both became 9,
+            /// witch means that in the cypher there is no distinction
+            /// between both of them. That can be easily solved by 
+            /// using capital letters in the alphabet.
+            /// 
+            /// To avoid problems, the function matches this regex
+            /// ^[A-z]*$ against the alphabet, if it gets no matches
+            /// the function automatically switches ignore case to its
+            /// oposite, so if you want to use an alphabet with capital letters
+            /// just set ignoreCase to true, otherwise just leave it as it is.
+            Assert.AreEqual("Hi I`m Gabriel Pasquale", caesarCypher.text, true);
+        }
     }
 }

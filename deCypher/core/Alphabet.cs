@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace deCypher
 {
@@ -7,6 +8,11 @@ namespace deCypher
     {
         public static readonly Alphabet defaultAlphabet = new Alphabet("abcdefghijklmnopqrstuvwxyz");
         public static readonly Alphabet complexAlphabet = new Alphabet("a1b2cç3d4e5f6g7h8i9j0k-l=m_nñ+o`p~q[r]s{t}u;v\"w;x'y/z?<.>\\|!)@(#*$&%^´");
+        public static readonly Alphabet ASCIIAlphabet = new Alphabet(" !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+
+        public static readonly Regex caseSensitiveAlphabetRegex = new Regex(@"^[A-z]*$");
+
+        public bool IsCaseSensitive => caseSensitiveAlphabetRegex.IsMatch(StringValue);
 
         public List<char> alphabet;
         public string StringValue

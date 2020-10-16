@@ -32,12 +32,14 @@ namespace deCypher
         public static string Encode(string text, int rot, Alphabet alphabet = null, bool ignoreCase = false)
         {
             alphabet ??= Alphabet.defaultAlphabet;
-            var newString = "";
+            if (!alphabet.IsCaseSensitive) ignoreCase = !ignoreCase;
+
             if (ignoreCase)
             {
                 alphabet.alphabet = alphabet.ListToLowerCase();
                 text = text.ToLowerInvariant();
             }
+            var newString = "";
             for (var i = 0; i < text.Length; i++)
             {
                 var tmp = alphabet.IndexOf(text[i]);
