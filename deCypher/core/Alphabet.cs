@@ -12,7 +12,7 @@ namespace deCypher
 
         public static readonly Regex caseSensitiveAlphabetRegex = new Regex(@"^[A-z]*$");
 
-        public bool IsCaseSensitive => caseSensitiveAlphabetRegex.IsMatch(StringValue);
+        public bool IsAToZ => caseSensitiveAlphabetRegex.IsMatch(StringValue);
 
         public List<char> alphabet;
         public string StringValue

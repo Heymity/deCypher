@@ -32,7 +32,7 @@ namespace deCypher
         public static string Encode(string text, int rot, Alphabet alphabet = null, bool ignoreCase = false)
         {
             alphabet ??= Alphabet.defaultAlphabet;
-            if (!alphabet.IsCaseSensitive) ignoreCase = !ignoreCase;
+            //if (!alphabet.IsAToZ) ignoreCase = !ignoreCase;
 
             if (ignoreCase)
             {
