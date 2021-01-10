@@ -1,7 +1,8 @@
+//#define GITHUB_TESTS
+
 using deCypher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-
 namespace deCypherTest
 {
     [TestClass]
@@ -62,9 +63,9 @@ namespace deCypherTest
         {
             // Create an instance to test:
             CaesarCypher caesarCypher = new CaesarCypher("Kl L`p Jdeulho Sdvtxdoh", Alphabet.defaultAlphabet, false, 3);
-            var list = caesarCypher.DictMatchBruteForceDecode("Hi");
+            var list = caesarCypher.AllMatchBruteForceDecode("Hi");
 
-            Assert.AreEqual("Hi I`m Gabriel Pasquale", list.results.ElementAt(list.matchIndexes[0]).Key);
+            Assert.AreEqual("Hi I`m Gabriel Pasquale", list.results[list.matchIndexes[0]].value);
         }
 
         [TestMethod]
@@ -137,12 +138,13 @@ namespace deCypherTest
         public void DifferentAlphabetDecodeCaesar()
         {
             // Create an instance to test:
-            //CaesarCypher caesarCypher = new CaesarCypher("90 0qñ 82ç{06_ [2}]\"2_6", Alphabet.complexAlphabet, false, 3);
-            //caesarCypher.Decode();
-
+#if !GITHUB_TESTS
+            CaesarCypher caesarCypher = new CaesarCypher("90 0qñ 82ç{06_ [2}]\"2_6", Alphabet.complexAlphabet, true, 3);
+            caesarCypher.Decode();
+#else
             CaesarCypher caesarCypher = new CaesarCypher("Kl#Lcp#Jdeulho#Sdvtxdoh", Alphabet.ASCIIAlphabet, false, 3);
             caesarCypher.Decode();
-
+#endif
             /// Ignore Case enabled for using the complex alphabet, here is why:
             ///     a1b2cç3d4e5f6g7h8i9j0k-l=m_nñ+o`p~q[r]s{t}u;v\"w;x'y/z?<.>\\|!)@(#*$&%^´
             ///     
@@ -153,18 +155,17 @@ namespace deCypherTest
             /// between both of them. That can be easily solved by 
             /// using capital letters in the alphabet.
             /// 
-            /// To avoid problems, the function matches this regex
-            /// ^[A-z]*$ against the alphabet, if it gets no matches
-            /// the function automatically switches ignore case to its
-            /// oposite, so if you want to use an alphabet with capital letters
+            /// So if you want to use an alphabet with capital letters
             /// just set ignoreCase to true, otherwise just leave it as it is.
             /// 
             /// The only problem is that github actions doesn`t reconize
             /// caracters like ç or ñ so I`m using the ASCIIAlphabet in the commit
-            /// Assert.AreEqual("Hi I`m Gabriel Pasquale", caesarCypher.text, true);
             /// 
-
+#if !GITHUB_TESTS
+            Assert.AreEqual("Hi I`m Gabriel Pasquale", caesarCypher.text, true);
+#else
             Assert.AreEqual("Hi I`m Gabriel Pasquale", caesarCypher.text);
+#endif
         }
     }
 }

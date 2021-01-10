@@ -10,9 +10,6 @@ namespace deCypher
         public static readonly Alphabet complexAlphabet = new Alphabet("a1b2cç3d4e5f6g7h8i9j0k-l=m_nñ+o`p~q[r]s{t}u;v\"w;x'y/z?<.>\\|!)@(#*$&%^´");
         public static readonly Alphabet ASCIIAlphabet = new Alphabet(" !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 
-        public static readonly Regex caseSensitiveAlphabetRegex = new Regex(@"^[A-z]*$");
-
-        public bool IsAToZ => caseSensitiveAlphabetRegex.IsMatch(StringValue);
 
         public List<char> alphabet;
         public string StringValue
@@ -39,6 +36,11 @@ namespace deCypher
         public Alphabet(string content)
         {
             alphabet = new List<char>(content.ToCharArray().Distinct());
+        }
+
+        public Alphabet(List<char> content)
+        {
+            alphabet = new List<char>(content);
         }
 
         public string ToLowerCase() => StringValue.ToLowerInvariant();

@@ -17,17 +17,23 @@ namespace deCypher
             Console.ForegroundColor = ConsoleColor.Green;
             CaesarCypher.MatchBruteForceDecode(encoded, "Gabriel").ForEach((string s) => Console.WriteLine(s));
             Console.WriteLine();
-            foreach(var c in CaesarCypher.DictMatchBruteForceDecode(encoded, "Gabriel").results)
+            foreach(var c in CaesarCypher.AllMatchBruteForceDecode(encoded, "Gabriel").results)
             {
-                if (c.Value == true) 
+                if (c.result == true) 
                 { 
                     Console.ForegroundColor = ConsoleColor.Magenta; 
                     Console.Write(" > ");
                 }
                 else Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(c.Key);
+                Console.WriteLine(c.value);
             }
             Console.ForegroundColor = tmp;
+
+            encoded = Vigenere.Encode("Hi I`m Gabriel Pasquale", "test", null, false);
+
+            Console.WriteLine(encoded);
+
+            Console.WriteLine(Vigenere.Decode(encoded, "test", null, false));
         }
     }
 }

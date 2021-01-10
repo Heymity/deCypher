@@ -14,7 +14,7 @@ namespace deCypher
         public List<string> BruteForceDecode() => BruteForceDecode(text, alphabet, ignoreCase);
         public List<string> ShortBruteForceDecode(int sampleSize = 10) => ShortBruteForceDecode(text, sampleSize, alphabet, ignoreCase);
         public List<string> MatchBruteForceDecode(string match) => MatchBruteForceDecode(text, match, alphabet, ignoreCase);
-        public (Dictionary<string, bool> results, List<int> matchIndexes) DictMatchBruteForceDecode(string match) => DictMatchBruteForceDecode(text, match, alphabet, ignoreCase);
+        public (List<(string value, bool result)> results, List<int> matchIndexes) AllMatchBruteForceDecode(string match) => AllMatchBruteForceDecode(text, match, alphabet, ignoreCase);
 
         public CaesarCypher(string _text, Alphabet _alphabet, bool _ignoreCase, int _rot)
         {
@@ -32,7 +32,6 @@ namespace deCypher
         public static string Encode(string text, int rot, Alphabet alphabet = null, bool ignoreCase = false)
         {
             alphabet ??= Alphabet.defaultAlphabet;
-            //if (!alphabet.IsAToZ) ignoreCase = !ignoreCase;
 
             if (ignoreCase)
             {
@@ -110,17 +109,17 @@ namespace deCypher
             return results;
         }
 
-        public static (Dictionary<string, bool> results, List<int> matchIndexes) DictMatchBruteForceDecode(string text, string match, Alphabet alphabet = null, bool ignoreCase = false)
+        public static (List<(string value, bool result)> results, List<int> matchIndexes) AllMatchBruteForceDecode(string text, string match, Alphabet alphabet = null, bool ignoreCase = false)
         {
             alphabet ??= Alphabet.defaultAlphabet;
-            var results = new Dictionary<string, bool>();
+            var results = new List<(string, bool)>();
             var matchIndexes = new List<int>();
             if (ignoreCase) match = match.ToLowerInvariant();
             for (var i = 0; i <= alphabet.Length - 1; i++)
             {
                 var decode = Encode(text, i, alphabet, ignoreCase);
                 var tmp = decode.Contains(match);
-                results.Add(decode, tmp);
+                results.Add((decode, tmp));
                 if (tmp) matchIndexes.Add(i);
             }
             return (results, matchIndexes);
