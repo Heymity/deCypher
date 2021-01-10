@@ -1,4 +1,4 @@
-//#define GITHUB_TESTS
+#define GITHUB_TESTS
 
 using deCypher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
