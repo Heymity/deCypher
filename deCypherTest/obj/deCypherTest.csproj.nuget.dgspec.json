@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypherTest\\deCypherTest.csproj": {}
+    "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypherTest\\deCypherTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypherTest\\deCypherTest.csproj": {
+    "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypherTest\\deCypherTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypherTest\\deCypherTest.csproj",
+        "projectUniqueName": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypherTest\\deCypherTest.csproj",
         "projectName": "deCypherTest",
-        "projectPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypherTest\\deCypherTest.csproj",
+        "projectPath": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypherTest\\deCypherTest.csproj",
         "packagesPath": "C:\\Users\\GABRIEL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypherTest\\obj\\",
+        "outputPath": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypherTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GABRIEL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj": {
-                "projectPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj"
+              "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj": {
+                "projectPath": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj"
               }
             }
           }
@@ -78,14 +78,14 @@
         }
       }
     },
-    "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj": {
+    "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj",
+        "projectUniqueName": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj",
         "projectName": "deCypher",
-        "projectPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj",
+        "projectPath": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj",
         "packagesPath": "C:\\Users\\GABRIEL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\obj\\",
+        "outputPath": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GABRIEL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -111,6 +111,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

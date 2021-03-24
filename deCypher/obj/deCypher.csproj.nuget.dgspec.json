@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj": {}
+    "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj": {
+    "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj",
+        "projectUniqueName": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj",
         "projectName": "deCypher",
-        "projectPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\deCypher.csproj",
+        "projectPath": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj",
         "packagesPath": "C:\\Users\\GABRIEL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GABRIEL\\Desktop\\Lang Files\\deCypher\\cs\\deCypher\\obj\\",
+        "outputPath": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GABRIEL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,13 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -47,12 +55,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.12, 3.1.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

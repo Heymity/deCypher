@@ -6,6 +6,13 @@ namespace deCypher
 {
     public class Vigenere : ICypher<string>
     {
+        public string text;
+        public Alphabet alphabet = Alphabet.defaultAlphabet;
+        public Alphabet keyAlphabet = Alphabet.defaultAlphabet;
+        public bool ignoreCase = false;
+        public bool ignoreKeyCase = false;
+        public string key;
+
         public static string Encode(string text, string key, Alphabet alphabet = null, bool ignoreCase = true, bool ignoreKeyCase = true, Alphabet keyAlphabet = null)
         {
             alphabet ??= Alphabet.defaultAlphabet;
@@ -66,14 +73,8 @@ namespace deCypher
             return Encode(text, nkey, alphabet, ignoreCase, ignoreKeyCase, keyAlphabet);
         }
 
-        public string Decode()
-        {
-            throw new NotImplementedException();
-        }
+        public string Decode() => text = Decode(text, key, alphabet, ignoreCase, ignoreKeyCase, keyAlphabet);
 
-        public string Encode()
-        {
-            throw new NotImplementedException();
-        }
+        public string Encode() => text = Encode(text, key, alphabet, ignoreCase, ignoreKeyCase, keyAlphabet);
     }
 }
