@@ -41,12 +41,20 @@ namespace deCypher
 
             Console.WriteLine(Vigenere.Decode(encoded, "test", null, false))*/
 
-            const string inputPath = @"C:\Users\GABRIEL\Pictures\Workspace Images\MoonEclipse.png";
-            const string outputPath = @"C:\Users\GABRIEL\Pictures\Workspace Images\MoonEclipse.out.png";
+            const string inputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\input\MoonEclipse.png";
+            const string outputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\output\MoonEclipse.out.png";
+            const string messageInputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\input\Message.png";
+            const string messageOutputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\output\MoonEclipse.out.png";
+
+            Bitmap message = new Bitmap(messageInputPath);
+            Bitmap outputMessage = new Bitmap(1,1);
 
             Bitmap image = new Bitmap(inputPath);
             Steganography steg = new Steganography(image, outputPath);
-            steg.LeastImportantBitsEncrypt("Lorem ipsum dolor sit amet, consectetur adipiscing elit.Quisque nunc tortor, malesuada a ligula non, eleifend hendrerit est.Curabitur fringilla, diam id aliquam rhoncus, diam massa vehicula erat, ut posuere diam augue et quam.Nullam consectetur leo massa, at suscipit quam pulvinar at.Fusce porta lectus faucibus eleifend elementum.Nam lacinia tristique tellus.Aliquam tempor lorem nec lectus volutpat, placerat dapibus augue suscipit.Nam pulvinar, quam eget rhoncus sagittis, diam risus vehicula risus, ut tristique lectus tellus at justo.Fusce eleifend mi et gravida pulvinar.Quisque a tortor non massa vehicula convallis et eget eros.Etiam tincidunt libero et convallis varius.Donec dictum pharetra velit, sed convallis ipsum congue vel.Morbi vitae interdum felis.Aliquam erat volutpat.Duis laoreet nunc sed sagittis mattis.Nulla dapibus ipsum sit amet eros lobortis, non ullamcorper lorem tristique.Proin egestas, ex vitae scelerisque sagittis, dui enim ullamcorper metus, nec dui. ");
+            //steg.LeastImportantBitsEncrypt("Lorem ipsum dolor sit amet, consectetur adipiscing elit.Quisque nunc tortor, malesuada a ligula non, eleifend hendrerit est.Curabitur fringilla, diam id aliquam rhoncus, diam massa vehicula erat, ut posuere diam augue et quam.Nullam consectetur leo massa, at suscipit quam pulvinar at.Fusce porta lectus faucibus eleifend elementum.Nam lacinia tristique tellus.Aliquam tempor lorem nec lectus volutpat, placerat dapibus augue suscipit.Nam pulvinar, quam eget rhoncus sagittis, diam risus vehicula risus, ut tristique lectus tellus at justo.Fusce eleifend mi et gravida pulvinar.Quisque a tortor non massa vehicula convallis et eget eros.Etiam tincidunt libero et convallis varius.Donec dictum pharetra velit, sed convallis ipsum congue vel.Morbi vitae interdum felis.Aliquam erat volutpat.Duis laoreet nunc sed sagittis mattis.Nulla dapibus ipsum sit amet eros lobortis, non ullamcorper lorem tristique.Proin egestas, ex vitae scelerisque sagittis, dui enim ullamcorper metus, nec dui. ");
+            steg.LeastImportantBitsEncrypt(message);
+            outputMessage = steg.LeastImportantBitsDecrypt<Bitmap>();
+            outputMessage.Save(messageOutputPath);
 #else
             Console.WriteLine("Please select the function to be called: (Type the letter in []. Case insensitive)");
             Console.WriteLine("[C]aesar Cypher\n[V]igenere Cypher");

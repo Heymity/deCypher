@@ -1,14 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "KT21PfssKHjcqIRUJDfzg3TBqtZ8zehobBv2iPwf/ejZgU6bgMkV7Ortsfaub7Q75Sf/s/UkTu35cpTriKoevg==",
+  "dgSpecHash": "W7HLgWQot0N5oCChnCKy8mOdbqcaSX5IRBD5SXEGr90IS0KXcApw8o8hJcuBuvkTY/xX/tq7+EYR70C5AVwFgQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\GABRIEL\\Desktop\\LangFiles\\deCypher\\cs\\deCypher\\deCypher.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GABRIEL\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\GABRIEL\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
-    "C:\\Users\\GABRIEL\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512",
-    "C:\\Users\\GABRIEL\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\GABRIEL\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.12\\microsoft.netcore.app.host.win-x64.3.1.12.nupkg.sha512"
+    "C:\\Users\\GABRIEL\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512"
   ],
   "logs": []
 }
