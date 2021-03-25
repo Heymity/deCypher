@@ -3,6 +3,7 @@ using deCypher.core.Steganography;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 
 namespace deCypher
@@ -41,23 +42,34 @@ namespace deCypher
 
             Console.WriteLine(Vigenere.Decode(encoded, "test", null, false))*/
 
-            const string inputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\input\MoonEclipse.png";
-            const string outputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\output\MoonEclipse.out.png";
+            const string inputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\input\BlankImage.png";
+            const string outputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\output\BlankImage.out.png";
             const string messageInputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\input\Message.png";
-            const string messageOutputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\output\MoonEclipse.out.png";
+            const string messageOutputPath = @"C:\Users\GABRIEL\Desktop\LangFiles\deCypher\stegIO\output\MessageOutput.out.png";
 
-            Bitmap message = new Bitmap(messageInputPath);
-            Bitmap outputMessage = new Bitmap(1,1);
+            byte[] fileBytes = File.ReadAllBytes(messageInputPath);
 
             Bitmap image = new Bitmap(inputPath);
+
             Steganography steg = new Steganography(image, outputPath);
-            //steg.LeastImportantBitsEncrypt("Lorem ipsum dolor sit amet, consectetur adipiscing elit.Quisque nunc tortor, malesuada a ligula non, eleifend hendrerit est.Curabitur fringilla, diam id aliquam rhoncus, diam massa vehicula erat, ut posuere diam augue et quam.Nullam consectetur leo massa, at suscipit quam pulvinar at.Fusce porta lectus faucibus eleifend elementum.Nam lacinia tristique tellus.Aliquam tempor lorem nec lectus volutpat, placerat dapibus augue suscipit.Nam pulvinar, quam eget rhoncus sagittis, diam risus vehicula risus, ut tristique lectus tellus at justo.Fusce eleifend mi et gravida pulvinar.Quisque a tortor non massa vehicula convallis et eget eros.Etiam tincidunt libero et convallis varius.Donec dictum pharetra velit, sed convallis ipsum congue vel.Morbi vitae interdum felis.Aliquam erat volutpat.Duis laoreet nunc sed sagittis mattis.Nulla dapibus ipsum sit amet eros lobortis, non ullamcorper lorem tristique.Proin egestas, ex vitae scelerisque sagittis, dui enim ullamcorper metus, nec dui. ");
-            steg.LeastImportantBitsEncrypt(message);
-            outputMessage = steg.LeastImportantBitsDecrypt<Bitmap>();
-            outputMessage.Save(messageOutputPath);
+
+            steg.LeastImportantBitsEncrypt(fileBytes);
+            byte[] outputMessage = steg.LeastImportantBitsDecrypt<byte[]>();
+
+            /**var diff = new List<int>();
+            for(int i = 0; i < 100; i++)
+            {
+                if(outputMessage[i] != fileBytes[i])
+                {
+                    Console.WriteLine($"index: {i}; file byte: {fileBytes[i]}; output byte: {outputMessage[i]}");
+                    diff.Add(i);
+                }
+            }*/
+
+            File.WriteAllBytes(messageOutputPath, outputMessage);
 #else
             Console.WriteLine("Please select the function to be called: (Type the letter in []. Case insensitive)");
-            Console.WriteLine("[C]aesar Cypher\n[V]igenere Cypher");
+            Console.WriteLine("[C]aesar Cypher\n[V]igenere Cypher\n[S]teganography");
             var ans = Console.ReadLine();
             switch (ans)
             {
@@ -68,6 +80,10 @@ namespace deCypher
                 case "c":
                 case "C":
                     HandleCaesar();
+                    break;
+                case "s":
+                case "S":
+                    HandleSteganography();
                     break;
             }
             Console.ReadLine();
@@ -121,6 +137,24 @@ namespace deCypher
                 case "a":
                 case "A":
                     HandleFunctionCalling(typeof(CaesarCypher).GetMethod("AllMatchBruteForceDecode", BindingFlags.Static | BindingFlags.Public));
+                    break;
+            }
+        }
+
+        public static void HandleSteganography()
+        {
+            Console.WriteLine("Please select the funticon to be called:");
+            Console.WriteLine("[E]ncode(filePath)\n[D]ecode(filePath)");
+            var ans = Console.ReadLine();
+            switch (ans)
+            {
+                case "e":
+                case "E":
+                    HandleFunctionCalling(typeof(Steganography).GetMethod("Encode", BindingFlags.Static | BindingFlags.Public));
+                    break;
+                case "d":
+                case "D":
+                    HandleFunctionCalling(typeof(Steganography).GetMethod("Decode", BindingFlags.Static | BindingFlags.Public));
                     break;
             }
         }
@@ -224,6 +258,11 @@ namespace deCypher
 
             object result = method.Invoke(null, para);
             Console.WriteLine();
+            if (result == null)
+            {
+                Console.WriteLine("Finished!");
+                return;
+            }
             if (result.GetType() == typeof(string))
             {
                 Console.WriteLine(result);
