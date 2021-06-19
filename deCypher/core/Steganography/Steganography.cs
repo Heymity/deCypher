@@ -27,14 +27,12 @@ namespace deCypher.core.Steganography
             height = bitmap.Height;      
         }
 
-        public Steganography(Bitmap bitmap, string outputPath, byte[] message)
+        public Steganography(Bitmap bitmap, string outputPath, byte[] message) : this(bitmap, outputPath)
         {
-            this.bitmap = bitmap;
-            this.outputPath = outputPath;
-            width = bitmap.Width;
-            height = bitmap.Height;
             messageBytes = message;
         }
+
+        public Steganography(Bitmap bitmap, byte[] message) : this(bitmap, "", message) { }
 
         public byte[] Encode()
         {
@@ -65,7 +63,7 @@ namespace deCypher.core.Steganography
             File.WriteAllBytes(outputPath, outputMessage);
         }
 
-        unsafe public void LeastImportantBitsEncrypt(object message, bool serialize = true)
+        unsafe public Bitmap LeastImportantBitsEncrypt(object message, bool serialize = true)
         {
             if (!serialize && message.GetType() != typeof(byte[])) throw new ArgumentException("Message is not byte[] and serialize is false");
 
@@ -157,7 +155,8 @@ namespace deCypher.core.Steganography
             }
 
             bitmap.UnlockBits(imageData);
-            bitmap.Save(outputPath);
+            if(outputPath != "") bitmap.Save(outputPath);
+            return bitmap;
         }
 
         unsafe public T LeastImportantBitsDecrypt<T>(bool deserialize = true)

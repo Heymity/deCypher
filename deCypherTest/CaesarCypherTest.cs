@@ -3,7 +3,7 @@
 using deCypher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace deCypherTest
+namespace deCypherTest.Caesar
 {
     [TestClass]
     public class CaesarCypherTest

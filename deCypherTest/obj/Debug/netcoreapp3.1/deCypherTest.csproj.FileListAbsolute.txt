@@ -197,3 +197,6 @@ C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\obj\Debug\netcoreapp
 C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\obj\Debug\netcoreapp3.1\deCypherTest.dll
 C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\obj\Debug\netcoreapp3.1\deCypherTest.pdb
 C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\obj\Debug\netcoreapp3.1\deCypherTest.genruntimeconfig.cache
+C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypher.deps.json
+C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypher.runtimeconfig.json
+C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypher.runtimeconfig.dev.json

@@ -4,12 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace deCypher
 {
     class Program
     {
+        public const string HelpText = "You can either use the CLI, by passing no argument, or use:" +
+            "\n-steg for Steganography operations" +
+            "\n-vigenere for Vigenere Cypher operations" +
+            "\n-caesar for Caesar Cypher operations";
+
         public static void Main(string[] args)
         {
 #if DISPLAY
@@ -68,7 +74,16 @@ namespace deCypher
 
             File.WriteAllBytes(messageOutputPath, outputMessage);
 #else
-            CLI();
+            //Array.ForEach(args, x => Console.WriteLine(x));
+            if (args.Length == 0)
+                CLI();
+            else
+            {
+                if (args.Contains("-steg")) HandleSteganography();
+                if (args.Contains("-vigenere")) HandleVigenere();
+                if (args.Contains("-caesar")) HandleCaesar();
+                if (args.Contains("-help")) Console.WriteLine(HelpText);                
+            }
 #endif
         }
 
@@ -156,7 +171,7 @@ namespace deCypher
         public static void HandleSteganography()
         {
             Console.WriteLine("Please select the funticon to be called:");
-            Console.WriteLine("[E]ncode(filePath)\n[D]ecode(filePath)\n[D]ecode [A]ll in folder(folder path)");
+            Console.WriteLine("[E]ncode(inputPath, outputPath, messagePath)\n[D]ecode(inputPath, outputPath)\n[D]ecode [A]ll in folder(folder path)");
             var ans = Console.ReadLine();
             switch (ans)
             {
@@ -250,7 +265,7 @@ namespace deCypher
                         i++;
                         continue;
                     }
-                    switch (ans)
+                    switch (ans.ToLowerInvariant())
                     {
                         case "0":
                         case "f":
@@ -310,7 +325,7 @@ namespace deCypher
                     Console.WriteLine(s);
                 }
             }
-            else if(result is (List<(string, bool)> results, List<int> matchIndexes))
+            else if(result is (List<(string, bool)> _, List<int> _))
             {
                 var res = ((List<(string value, bool result)> results, List<int> matchIndexes))result;
                 foreach (var c in res.results)

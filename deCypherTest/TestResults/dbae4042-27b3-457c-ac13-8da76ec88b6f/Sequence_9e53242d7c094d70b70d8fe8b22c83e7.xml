@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<TestSequence>
+  <Test Name="deCypherTest.Steg.ObsoleteSteganographyTest.EncodeDecode32bbp" DisplayName="EncodeDecode32bbp" Source="C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypherTest.dll" Completed="True" />
+  <Test Name="deCypherTest.Steg.ObsoleteSteganographyTest.EncodeDecode24bbp" DisplayName="EncodeDecode24bbp" Source="C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypherTest.dll" Completed="False" />
+</TestSequence>

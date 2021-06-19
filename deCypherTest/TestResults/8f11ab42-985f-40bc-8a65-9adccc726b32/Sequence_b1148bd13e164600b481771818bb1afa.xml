@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<TestSequence>
+  <Test Name="deCypherTest.Steg.ObsoleteSteganographyTest.EncodeDecode32bpp" DisplayName="EncodeDecode32bpp" Source="C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypherTest.dll" Completed="True" />
+  <Test Name="deCypherTest.Steg.ObsoleteSteganographyTest.EncodeDecode24bpp" DisplayName="EncodeDecode24bpp" Source="C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypherTest.dll" Completed="True" />
+  <Test Name="deCypherTest.Caesar.CaesarCypherTest.EncodeCaesar" DisplayName="EncodeCaesar" Source="C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypherTest.dll" Completed="True" />
+  <Test Name="deCypherTest.Caesar.CaesarCypherTest.DecodeCaesar" DisplayName="DecodeCaesar" Source="C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypherTest.dll" Completed="True" />
+  <Test Name="deCypherTest.Caesar.CaesarCypherTest.DecodeBruteForceCaesar" DisplayName="DecodeBruteForceCaesar" Source="C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypherTest.dll" Completed="True" />
+  <Test Name="deCypherTest.Caesar.CaesarCypherTest.ShortDecodeBruteForceCaesar" DisplayName="ShortDecodeBruteForceCaesar" Source="C:\Users\GABRIEL\Desktop\LangFiles\deCypher\cs\deCypherTest\bin\Debug\netcoreapp3.1\deCypherTest.dll" Completed="False" />
+</TestSequence>
