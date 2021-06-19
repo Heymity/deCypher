@@ -1,4 +1,4 @@
-﻿#define DISPLAY
+﻿//#define DISPLAY
 using deCypher.core.Steganography;
 using System;
 using System.Collections.Generic;
@@ -68,6 +68,12 @@ namespace deCypher
 
             File.WriteAllBytes(messageOutputPath, outputMessage);
 #else
+            CLI();
+#endif
+        }
+
+        public static void CLI()
+        {
             Console.WriteLine("Please select the function to be called: (Type the letter in []. Case insensitive)");
             Console.WriteLine("[C]aesar Cypher\n[V]igenere Cypher\n[S]teganography");
             var ans = Console.ReadLine();
@@ -85,9 +91,15 @@ namespace deCypher
                 case "S":
                     HandleSteganography();
                     break;
+                default:
+                    Console.WriteLine("Operation not found");
+                    break;
             }
-            Console.ReadLine();
-#endif
+
+            Console.WriteLine("Do you want to do any more operations? [Y/n]");
+            var anyMore = Console.ReadLine();
+
+            if (anyMore == "Y" || anyMore == "y") CLI();
         }
 
         public static void HandleVigenere()
@@ -144,7 +156,7 @@ namespace deCypher
         public static void HandleSteganography()
         {
             Console.WriteLine("Please select the funticon to be called:");
-            Console.WriteLine("[E]ncode(filePath)\n[D]ecode(filePath)");
+            Console.WriteLine("[E]ncode(filePath)\n[D]ecode(filePath)\n[D]ecode [A]ll in folder(folder path)");
             var ans = Console.ReadLine();
             switch (ans)
             {
@@ -155,6 +167,29 @@ namespace deCypher
                 case "d":
                 case "D":
                     HandleFunctionCalling(typeof(Steganography).GetMethod("Decode", BindingFlags.Static | BindingFlags.Public));
+                    break;
+                case "Da":
+                case "DA":
+                case "da":
+                case "dA":
+                    var folderPath = Console.ReadLine();
+                    var files = Directory.GetFiles(folderPath, "*.png");
+
+                    foreach (var filePath in files)
+                    {
+                        try
+                        {
+                            Steganography.Decode(filePath, $"{folderPath}\\{filePath.Split('\\')[^1]}.out.png");
+                            Console.WriteLine($"Decoded {filePath.Split('\\')[^1]}");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Failed to decode {filePath.Split('\\')[^1]}: {e.Message}");
+                        }
+                    }
+
+                    Console.WriteLine("Finished!");
+
                     break;
             }
         }
@@ -167,7 +202,7 @@ namespace deCypher
             Console.WriteLine("Input Optional Values? Y/N");
             var yn = Console.ReadLine();
             bool ov = false;
-
+           
             if (yn == "y" || yn == "Y") ov = true;
 
             object[] para = new object[parames.Length];
@@ -176,7 +211,7 @@ namespace deCypher
             {
                 var op = p.IsOptional;
                 if (op && !ov) break;
-                Console.Write($"{p.Name} ({p.ParameterType}{(op ? ", default: " + (p.DefaultValue == null ? "null" : p.DefaultValue) : "")}): ");
+                Console.Write($"{p.Name} ({p.ParameterType}{(op ? ", default: " + (p.DefaultValue ?? "null") : "")}): ");
                 if (p.ParameterType == typeof(int))
                 {
                     start:

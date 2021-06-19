@@ -2,7 +2,7 @@
 
 using deCypher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
+
 namespace deCypherTest
 {
     [TestClass]

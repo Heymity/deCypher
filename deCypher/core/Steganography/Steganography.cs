@@ -67,13 +67,15 @@ namespace deCypher.core.Steganography
 
         unsafe public void LeastImportantBitsEncrypt(object message, bool serialize = true)
         {
-            if (!serialize) if (message.GetType() != typeof(byte[])) throw new ArgumentException("Message is not byte[] and serialize is false");
+            if (!serialize && message.GetType() != typeof(byte[])) throw new ArgumentException("Message is not byte[] and serialize is false");
 
             width = bitmap.Width;
             height = bitmap.Height;
             imageData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
-            //stride = imageData.Stride / 4;
-            stride = width;
+            if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
+                stride = imageData.Stride / 4;
+            else
+                stride = imageData.Stride / 3;
 
 
             uint* ptr = (uint*)imageData.Scan0.ToPointer();
@@ -94,14 +96,20 @@ namespace deCypher.core.Steganography
                     var pixelNum = y * stride + x;
                     uint pixel = *(ptr + pixelNum);
 
-                    byte a = (byte)((0xFF000000 & pixel) >> 24);
+                    byte a = 255;
+                    if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
+                        a = (byte)((0xFF000000 & pixel) >> 24);
                     byte r = (byte)((0x00FF0000 & pixel) >> 16);
                     byte g = (byte)((0x0000FF00 & pixel) >> 8);
                     byte b = (byte)((0x000000FF & pixel));
 
                     HideMessage(ref r, ref g, ref b, bytesLenght, messageIndex, pixelIndex, ref offsetIndex);
 
-                    *(ptr + y * stride + x) = ((uint)(a << 24) | (uint)(r << 16) | (uint)(g << 8) | b);
+                    if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
+                        *(ptr + y * stride + x) = ((uint)(a << 24) | (uint)(r << 16) | (uint)(g << 8) | b);
+                    else
+                        *(ptr + y * stride + x) = ((uint)(r << 16) | (uint)(g << 8) | b);
+
                     pixelIndex++;
                     if (pixelIndex % 4 == 0)
                     {
@@ -157,8 +165,10 @@ namespace deCypher.core.Steganography
             width = bitmap.Width;
             height = bitmap.Height;
             imageData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
-            //stride = imageData.Stride / 4;
-            stride = width;
+            if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
+                stride = imageData.Stride / 4;
+            else
+                stride = imageData.Stride / 3;
 
 
             uint* ptr = (uint*)imageData.Scan0.ToPointer();
